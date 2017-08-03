@@ -2,6 +2,9 @@
 from maintenance import Maintenance
 import time
 from water import Water
+from food import Food
+from commands import Commands
+from resources import Resources
 
 #Create the main class, from which everything else is run:
 class Main:
@@ -18,7 +21,21 @@ class Main:
 		
 		for chr in welcomeMessage:
 			print(chr , end = '')
-			time.sleep(0.06)
-			
-	else:
-		#Add code here to load-up all of the extra files into the variables in the resources class, such as how many people should be fetching water. Probably should add this as a method in the Maintenance class.
+			time.sleep(0.057)
+
+
+	#Load all of the necessary data:
+	Maintenance.loadData()
+
+	#Instantiate all of the necessary objects:
+	water1 = Water()
+	food1 = Food()
+
+
+	#Start the command loop:
+	while True:
+		#Wait for a command, and create a prompt:
+		command = input('root@cyborgconsole:~ $ ')
+
+		#Test the command, to figure out which corresponding method to execute, then call that method:
+		Commands.identifyCommandAndCallCorrectMethod(command)

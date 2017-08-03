@@ -1,5 +1,6 @@
 #import the necessary packages:
 import os , pickle
+from resources import Resources
 
 #Create a class in charge of all of the code "maintenence":
 class Maintenance:
@@ -58,3 +59,7 @@ class Maintenance:
 					
 			os.removedirs('Saved Data')	
 				
+	#Define a function to load all of the necessary data into static variables in the Resources class:
+	def loadData():
+		Resources.water = Resources.loadResourceAmount('water.dat')
+		Resources.food = Resources.loadResourceAmount('food.dat')

@@ -1,12 +1,12 @@
 import threading , time
 from resources import Resources
 
-#Create a water class, with Resources as its base class:
-class Water(Resources):
+#Create a food class, with Resources as its base class:
+class Food(Resources):
 	#Thread this object right from its creation:
 	def __init__(self):
-		waterThread = threading.Thread(target = self.progress , args = ())
-		waterThread.start()
+		foodThread = threading.Thread(target = self.progress , args = ())
+		foodThread.start()
 
 	def progress(self):
 		while True:
@@ -16,10 +16,10 @@ class Water(Resources):
 				if (Resources.timeToQuit):
 					break
 
-			Resources.water = Resources.loadResourceAmount('water.dat')
-			Resources.water += 1
-			Resources.waterToPrint += 1
-			Resources.saveResourceAmount(Resources.water, 'water.dat')
-
+			Resources.food = Resources.loadResourceAmount('food.dat')
+			Resources.food += 1
+			Resources.foodToPrint += 1
+			Resources.saveResourceAmount(Resources.food, 'food.dat')
+			
 			if (Resources.timeToQuit):
 				break
