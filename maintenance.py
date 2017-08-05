@@ -5,7 +5,7 @@ from resources import Resources
 #Create a class in charge of all of the code "maintenence":
 class Maintenance:
 	#Create a list of all of the files:
-	fileList = ['water.dat' , 'food.dat']
+	fileList = ['water.dat' , 'drinkers.dat' , 'food.dat' , 'eaters.dat']
 
 	#Define a function to check and make sure all of the necessary files exist:
 	def checkFilesExist():
@@ -39,7 +39,10 @@ class Maintenance:
 			
 			if (not os.path.isfile(filename)):
 				openFile = open(filename , 'wb')
-				pickle.dump(defaultVariable , openFile)
+				if ((file == 'drinkers.dat') or (file == 'eaters.dat')):
+					pickle.dump(1 , openFile)
+				else:
+					pickle.dump(defaultVariable , openFile)
 				openFile.close()
 			else:
 				isCheating = True
@@ -63,3 +66,5 @@ class Maintenance:
 	def loadData():
 		Resources.water = Resources.loadResourceAmount('water.dat')
 		Resources.food = Resources.loadResourceAmount('food.dat')
+		Resources.drinkers = Resources.loadResourceAmount('drinkers.dat')
+		Resources.eaters = Resources.loadResourceAmount('eaters.dat')

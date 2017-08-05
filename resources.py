@@ -1,15 +1,19 @@
 import pickle
+import time
 
 #Create a resources class, the parent class to each resource, which progresses the game:
 class Resources:
 	#Create a quit-marker variable:
 	timeToQuit = False
+	timeOfLastPrint = time.time()
 
 	#Create variables to store the amount of each resource:
 	water = 0
 	waterToPrint = 0
 	food = 0
 	foodToPrint = 0
+	drinkers = 1
+	eaters = 1
 	
 	#Create a class method which loads its resource data:
 	def loadResourceAmount(filename):
@@ -31,6 +35,7 @@ class Resources:
 
 	#Create a class method which prints resource amount updates to the screen:
 	def printResources():
+		Resources.timeOfLastPrint = time.time()
 		print('\n+' , Resources.waterToPrint , ' water...' , '\n' , '+' , Resources.foodToPrint , ' food...' , '\n' , sep = '')
 		Resources.waterToPrint = 0
 		Resources.foodToPrint = 0
